@@ -12,7 +12,7 @@ int main()
   
   result = Sumfunction(i,j);
   
-  printf("Sum =%d\n",i+j);
+  printf("Sum =%d\n",result);
   printf("mul= %d\n",i*j);
   printf("div= %d\n",i/j);
   printf("min= %d\n",i-j);
