@@ -9,7 +9,8 @@ int Min(int num1, int num2);
 int main()
 {
   int i,j;
-  int sum, mul, div, min;
+  int sum, mul,min;
+  double div;
   
   printf("정수 두개를 입력하시오.\n");
   scanf_s("%d %d",&i,&j);
@@ -21,7 +22,7 @@ int main()
   
   printf("Sum =%d\n",sum);
   printf("mul= %d\n",mul);
-  printf("div= %d\n",div);
+  printf("div= %f\n",div);
   printf("min= %d\n",min);
   
   return 0;
@@ -29,7 +30,7 @@ int main()
 
 int Sumfunction(int num1, int num2)
 {
-  return a+b;
+  return num1+num2;
 }
 
 int Mul(int num1, int num2){
