@@ -20,9 +20,9 @@ int main()
   min= Min(i,j);
   
   printf("Sum =%d\n",sum);
-  printf("mul= %d\n",i*j);
-  printf("div= %d\n",i/j);
-  printf("min= %d\n",i-j);
+  printf("mul= %d\n",mul);
+  printf("div= %d\n",div);
+  printf("min= %d\n",min);
   
   return 0;
 }
