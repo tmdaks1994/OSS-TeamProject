@@ -12,10 +12,10 @@ int main()
   
   result = Sumfunction(i,j);
   
-  printf("Sum =%d",i+j);
-  printf("mul= %d",i*j);
-  printf("div= %d",i/j);
-  printf("min= %d",i-j);
+  printf("Sum =%d\n",i+j);
+  printf("mul= %d\n",i*j);
+  printf("div= %d\n",i/j);
+  printf("min= %d\n",i-j);
   
   return 0;
 }
