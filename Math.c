@@ -2,8 +2,8 @@
 
 int main()
 {
-  int i = 500;
-  int j = 400;
+  int i,j;
+ 
   
   printf("Sum =%d",i+j);
   printf("mul= %d",i*j);
