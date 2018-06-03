@@ -13,7 +13,6 @@ public class file extends JFrame {
 // 파일 창 객제를 나타낸다.
 JFileChooser fileChooser =new JFileChooser();
 
-
 //기본 path의 경로 설정(바탕화면)
 fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")+ "//"+ "Desktop"));
  //필터링될 확장자
