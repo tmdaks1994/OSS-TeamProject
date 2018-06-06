@@ -38,6 +38,7 @@ public class Newwindow extends JFrame {
 	 private static int result;
 	 static long eventMask;
 	 static long L;
+	 static String runlength;
 	/**
 	 * Launch the application.
 	 */static TreeMap<Character, String> treeMap=new TreeMap<>();
@@ -46,7 +47,7 @@ public class Newwindow extends JFrame {
 			public void run() {
 				try {
 					
-					Newwindow frame = new Newwindow(str, treeMap, eventMask,L);
+					Newwindow frame = new Newwindow(str, treeMap, eventMask,L,runlength);
 					frame.setVisible(true);
 					frame.setResizable(false);;
 				} catch (Exception e) {
@@ -63,7 +64,7 @@ public class Newwindow extends JFrame {
 	 * @param str2 
 	 * @param string 
 	 */
-	public Newwindow(String str2, TreeMap<Character, String> treeMap2,long time,long num) {
+	public Newwindow(String str2, TreeMap<Character, String> treeMap2,long time,long num,String runlength) {
 		  double endnum= (double)str2.length()/8; //압축크기
 	    //  String endnumber=String.format("%.2f", endnum);
 	      double size= Math.round(endnum*100d)/100d;
@@ -88,7 +89,7 @@ public class Newwindow extends JFrame {
 		}
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 670, 500);
+		setBounds(100, 100, 780, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -97,7 +98,7 @@ public class Newwindow extends JFrame {
 		
 		Panel panel = new Panel();
 		//panel.setBackground(Color.blue);
-		panel.setBounds(0, 0, 654, 461);
+		panel.setBounds(0, 0, 764, 461);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -115,7 +116,7 @@ public class Newwindow extends JFrame {
 		
 		
 		JButton button = new JButton("\uBE44\uAD50\uD558\uAE30"); // 비교하기
-		button.setBounds(486, 428, 97, 23);
+		button.setBounds(422, 428, 97, 23);
 		panel.add(button);
 		button.addActionListener(new ActionListener() {
 			
@@ -169,7 +170,7 @@ public class Newwindow extends JFrame {
 		panel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("\uC555\uCD95\uD574\uC81C"); // 압축해제
-		btnNewButton_1.setBounds(377, 428, 97, 23);
+		btnNewButton_1.setBounds(296, 428, 97, 23);
 		panel.add(btnNewButton_1);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -181,6 +182,23 @@ public class Newwindow extends JFrame {
 		textArea_1.setLineWrap(true);
 		textArea_1.setWrapStyleWord(true);
 		textArea_1.setText(str2);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(437, 25, 315, 300);
+		panel.add(scrollPane_2);
+		
+		JTextArea textArea_2 = new JTextArea();
+		scrollPane_2.setViewportView(textArea_2);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(434, 352, 318, 41);
+		panel.add(scrollPane_3);
+		
+		JTextArea textArea_3 = new JTextArea();
+		scrollPane_3.setViewportView(textArea_3);
+		textArea_3.setWrapStyleWord(true);
+		textArea_3.setLineWrap(true);
+		textArea_3.setText(runlength);
 		
 		
 		btnNewButton.addActionListener(new ActionListener() { // 파일 다시 선택하기

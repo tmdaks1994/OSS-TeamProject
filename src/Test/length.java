@@ -1,5 +1,5 @@
 
-package length;
+package Test;
  
 
 import java.io.BufferedReader;
@@ -14,14 +14,15 @@ import java.util.regex.Pattern;
 public class length {
 	
 	static String s = new String();
-	static String e;
-	static String d;
+	static String encod;
+//	static String d;
+	static String text = "";
 	static String[] splitedStr;
 	
 	@SuppressWarnings("unused")
-	public static void main(String[] args) {
+	public static void Start(String args) {
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("C:\\input.txt"));
+			BufferedReader br = new BufferedReader(new FileReader(args));
 			while(true)
 			{
 				
@@ -30,10 +31,11 @@ public class length {
 					splitedStr = s.split(" ");
 					s = br.readLine();
 					if(s == null) break;
-					 encode(s);
-					 decode(e);
+					text=s;
 					
-					
+					encod = encode();
+				        decode();
+				
 				} 
 				catch (IOException e) 
 				{
@@ -57,33 +59,34 @@ public class length {
 		}
 	}
  
-	static String encode(String source) {
+	static String encode() {
 		StringBuffer stringBuffer = new StringBuffer();
 		
 		splitedStr = null;
 		   
-		splitedStr = source.split(" ");
+		splitedStr = text.split(" ");
 		
-		for (int i = 0; i < source.length(); i++) {
+		for (int i = 0; i < text.length(); i++) {
 			int runLength = 1;
 			
-			while (i + 1 < source.length() && source.charAt(i) == source.charAt(i + 1)) {
+			while (i + 1 < text.length() && text.charAt(i) == text.charAt(i + 1)) {
 				runLength++;
 				i++;
 			}
  
 			stringBuffer.append(runLength); // AAA -> 3
-			stringBuffer.append(source.charAt(i)); // A
+			stringBuffer.append(text.charAt(i)); // A
+			
 		}
 		
 		return stringBuffer.toString();
 	}
  
-	static String decode(String source) {
+	static String decode() {
 		StringBuffer stringBuffer = new StringBuffer();
 		
 		Pattern pattern = Pattern.compile("[0-9]+|[a-zA-Z]");
-		Matcher matcher = pattern.matcher(source);
+		Matcher matcher = pattern.matcher(encod);
  
 		while (matcher.find()) {
 			int num = Integer.parseInt(matcher.group());
