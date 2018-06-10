@@ -221,7 +221,8 @@ btnNewButton.addActionListener(new ActionListener() { //압축하기 버튼 실행
 				try {
 				//	hubTest.codes.clear();
 					hubTest바꾼것.main(getStr());
-					length.Start(getStr());
+					//length.Start(getStr());
+					Runlength.main(getStr());
 					//System.out.println("실행됨");
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
@@ -229,7 +230,9 @@ btnNewButton.addActionListener(new ActionListener() { //압축하기 버튼 실행
 				}
 				
 				long end = System.currentTimeMillis();
-				Newwindow window = new Newwindow(hubTest바꾼것.encodeText(),hubTest바꾼것.printCodes(), System.currentTimeMillis()-startTime,L,length.encode());
+			
+				Newwindow window = new Newwindow(hubTest바꾼것.encodeText(),hubTest바꾼것.printCodes(), System.currentTimeMillis()-startTime,L,Runlength.getRunlength());
+				
 				//System.out.println("여기서 실행");
 				window.setVisible(true);
 				window.setResizable(false);

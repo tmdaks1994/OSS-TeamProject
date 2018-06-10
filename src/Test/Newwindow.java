@@ -29,6 +29,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JLayeredPane;
+import javax.swing.JTabbedPane;
 
 public class Newwindow extends JFrame {
 
@@ -38,7 +39,8 @@ public class Newwindow extends JFrame {
 	 private static int result;
 	 static long eventMask;
 	 static long L;
-	 static String runlength;
+	 //static String runlength;
+	 static StringBuffer runlength;
 	/**
 	 * Launch the application.
 	 */static TreeMap<Character, String> treeMap=new TreeMap<>();
@@ -64,7 +66,7 @@ public class Newwindow extends JFrame {
 	 * @param str2 
 	 * @param string 
 	 */
-	public Newwindow(String str2, TreeMap<Character, String> treeMap2,long time,long num,String runlength) {
+	public Newwindow(String str2, TreeMap<Character, String> treeMap2,long time,long num,StringBuffer runlength) {
 		  double endnum= (double)str2.length()/8; //압축크기
 	    //  String endnumber=String.format("%.2f", endnum);
 	      double size= Math.round(endnum*100d)/100d;
@@ -109,8 +111,6 @@ public class Newwindow extends JFrame {
 		JTextArea textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
 		textArea.setEditable(false);
-		//textArea.setText(" "+treeMap+"\n"+str);
-	//	System.out.println("여기는 아님");
 		treeMap2.forEach((k,v) -> textArea.append("'" + k + "' : " + v+"\n"));
 		
 		
@@ -122,42 +122,7 @@ public class Newwindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-			/*	JTextField lField = new JTextField(5); //lenght field 
-			      JTextField wField = new JTextField(5); //col field
-			    
-			      
-			      //design input line
-			      JPanel choosePanel [] = new JPanel [5];
-			       choosePanel [0] = new JPanel();
-			       choosePanel [1] = new JPanel();
-			       choosePanel [2] = new JPanel();
-			       choosePanel [3] = new JPanel();
-			       choosePanel [4] = new JPanel();
-			       
-			       
-			      choosePanel[0].add(new JLabel("압축 정보") );
-			      
-			      choosePanel[1].add(new JLabel("원본크기: "+num+"bytes"));
-			      //choosePanel[1].add(lField);
-			      choosePanel[1].add(Box.createHorizontalStrut(15)); // a spacer
-			      
-			      choosePanel[2].add(new JLabel("압축크기:"+ endnumber+"bytes"));
-			      //choosePanel[2].add(wField);
-			      choosePanel[2].add(Box.createHorizontalStrut(15));
-			      
-			      choosePanel[3].add(new JLabel("압축률: "+ number+"%"));
-			     // choosePanel[3].add(wField);
-			      choosePanel[3].add(Box.createHorizontalStrut(15));
-
-			      choosePanel[4].add(new JLabel("압축시간: "+time+"ms"));
-			     // choosePanel[4].add(wField);
-			      choosePanel[4].add(Box.createHorizontalStrut(15));
-
-			      
-			      result = JOptionPane.showConfirmDialog(null, choosePanel, 
-			               null,JOptionPane.OK_CANCEL_OPTION, 
-			               JOptionPane.PLAIN_MESSAGE);*/
+			
 				
 				TabDemo tab= new TabDemo(num,size,mm,time);
 				tab.setVisible(true);
@@ -174,7 +139,7 @@ public class Newwindow extends JFrame {
 		panel.add(btnNewButton_1);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(24, 351, 360, 43);
+		scrollPane_1.setBounds(24, 351, 360, 55);
 		panel.add(scrollPane_1);
 		
 		JTextArea textArea_1 = new JTextArea();
@@ -183,22 +148,53 @@ public class Newwindow extends JFrame {
 		textArea_1.setWrapStyleWord(true);
 		textArea_1.setText(str2);
 		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(434, 0, 318, 418);
+		panel.add(tabbedPane);
+		
+		JPanel runlengthpanel = new JPanel();
+		tabbedPane.addTab("Run-length", null, runlengthpanel, null);
+		runlengthpanel.setLayout(null);
+		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(437, 25, 315, 300);
-		panel.add(scrollPane_2);
+		scrollPane_2.setBounds(0, 0, 313, 295);
+		runlengthpanel.add(scrollPane_2);
 		
 		JTextArea textArea_2 = new JTextArea();
 		scrollPane_2.setViewportView(textArea_2);
 		
 		JScrollPane scrollPane_3 = new JScrollPane();
-		scrollPane_3.setBounds(434, 352, 318, 41);
-		panel.add(scrollPane_3);
+		scrollPane_3.setBounds(0, 330, 313, 49);
+		runlengthpanel.add(scrollPane_3);
 		
 		JTextArea textArea_3 = new JTextArea();
 		scrollPane_3.setViewportView(textArea_3);
 		textArea_3.setWrapStyleWord(true);
 		textArea_3.setLineWrap(true);
-		textArea_3.setText(runlength);
+		textArea_3.setText(runlength.toString());
+		
+		JPanel LZWpanel = new JPanel();
+		tabbedPane.addTab("LZW", null, LZWpanel, null);
+		LZWpanel.setLayout(null);
+		
+		JScrollPane scrollPane_4 = new JScrollPane();
+		scrollPane_4.setBounds(0, 0, 313, 296);
+		LZWpanel.add(scrollPane_4);
+		
+		JTextArea textArea_4 = new JTextArea();
+		scrollPane_4.setViewportView(textArea_4);
+		
+		JScrollPane scrollPane_5 = new JScrollPane();
+		scrollPane_5.setBounds(0, 329, 311, 50);
+		LZWpanel.add(scrollPane_5);
+		
+		JTextArea textArea_5 = new JTextArea();
+		scrollPane_5.setViewportView(textArea_5);
+		
+		JLabel lblHuffman = new JLabel("Huffman");
+		lblHuffman.setBounds(24, 4, 57, 15);
+		panel.add(lblHuffman);
+		
 		
 		
 		btnNewButton.addActionListener(new ActionListener() { // 파일 다시 선택하기

@@ -13,6 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 
 public class newframe extends JFrame {
 
@@ -56,7 +57,7 @@ static String title;
 		}
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 700, 442);
+		setBounds(100, 100, 780, 440);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -64,7 +65,7 @@ static String title;
 		setTitle("파일 디코딩(파일 압축해제)");
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 684, 403);
+		panel.setBounds(0, 0, 764, 401);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -76,6 +77,24 @@ static String title;
 		scrollPane.setViewportView(textArea);
 		textArea.setEditable(false);
 		textArea.setText(hubTest바꾼것.decodeText(str));
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(429, 22, 309, 358);
+		panel.add(tabbedPane);
+		
+		JPanel panel_1 = new JPanel();
+		tabbedPane.addTab("Run-length", null, panel_1, null);
+		panel_1.setLayout(null);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(0, 0, 304, 329);
+		panel_1.add(scrollPane_1);
+		
+		JTextArea textArea_1 = new JTextArea();
+		scrollPane_1.setViewportView(textArea_1);
+		
+		JPanel LZWpanel = new JPanel();
+		tabbedPane.addTab("LZW", null, LZWpanel, null);
 		
 		//System.out.println(hubTest바꾼것.decodeText(str));
 		
