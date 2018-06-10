@@ -31,7 +31,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import com.jtattoo.plaf.JTattooUtilities;
 
-import ï¿½ï¿½ï¿½ï¿½.hubTest;
+import ¾ÐÃà.hubTest;
 
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -46,15 +46,15 @@ public class zipfile extends JFrame {
 	public String str;
 	public static String nul=null;
 	public String rec;
-
-
-
+	
+	
+	
 
 	JFileChooser jfcd;
 	JScrollPane jsp;
-	FileNameExtensionFilter filter = new FileNameExtensionFilter("txt ï¿½ï¿½ï¿½ï¿½", "txt");
+	FileNameExtensionFilter filter = new FileNameExtensionFilter("txt ÆÄÀÏ", "txt");
 	SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -76,7 +76,7 @@ public class zipfile extends JFrame {
 	 * Create the frame.
 	 */
 	public zipfile() {
-
+	
 		try {
 			UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
 		} catch (ClassNotFoundException e1) {
@@ -92,61 +92,69 @@ public class zipfile extends JFrame {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
-		setStr(nul);//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¢ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½Ñ¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½
-
+		
+		setStr(nul);//ÆÄÀÏ ¼±ÅÃÃ¢À» ´Ù½Ã ºÒ·¯¿ÔÀ»¶§ ÆÄÀÏ °æ·Î°ªÀ» ÃÊ±âÈ­ ½ÃÄÑ¼­ ¾ÐÃàÇÏ±â ¹öÆ°À» ´Ù½Ã ´­·¶À»¶§ °æ°í ¸Þ¼¼Áö °¡ ¶ß°Ô ÇÔ
+		//name nameing = new name();
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 890, 450);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setTitle("ï¿½ï¿½ï¿½ï¿½ ï¿½Ë°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½");
-
-		JButton btnNewButton = new JButton("ï¿½ï¿½ï¿½ï¿½ ï¿½Ï±ï¿½");
+		setTitle("¾ÐÃà ¾Ë°í¸®Áò ºñ±³ ÇÁ·Î±×·¥");
+		
+		JButton btnNewButton = new JButton("¾ÐÃà ÇÏ±â");
 		btnNewButton.setBounds(390, 354, 97, 23);
 		contentPane.add(btnNewButton);
-
-
-		JLabel label = new JLabel("\uD5C8\uD504\uB9CC \uC555\uCD95"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		
+	/*	JButton btnNewButton_1 = new JButton("¾ÐÃà ÇØÁ¦");
+		btnNewButton_1.setBounds(391, 356, 97, 23);
+		contentPane.add(btnNewButton_1);*/
+		
+		
+		JLabel label = new JLabel("\uD5C8\uD504\uB9CC \uC555\uCD95"); //ÇãÇÁ¸¸ ¾ÐÃà
 		label.setBounds(167, 44, 80, 15);
 		contentPane.add(label);
-
-
-		JLabel lblNewLabel = new JLabel("\uBE44\uAD50\uB300\uC0C1 \uC555\uCD95\uC54C\uACE0\uB9AC\uC998"); //ï¿½ñ±³´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ë°ï¿½ï¿½ï¿½ï¿½ï¿½
+		
+		
+		JLabel lblNewLabel = new JLabel("\uBE44\uAD50\uB300\uC0C1 \uC555\uCD95\uC54C\uACE0\uB9AC\uC998"); //ºñ±³´ë»ó ¾ÐÃà¾Ë°í¸®Áò
 		lblNewLabel.setBounds(607, 44, 168, 15);
 		contentPane.add(lblNewLabel);
-
+		
 		JTextArea textArea_2 = new JTextArea();
 		textArea_2.setBounds(157, 10, 535, 24);
 		textArea_2.setEditable(false);
 		contentPane.add(textArea_2);
-
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(157, 69, 537, 275);
 		contentPane.add(scrollPane);
-
+		
 		JTextArea textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
 		textArea.setEditable(false);
-
-		JButton btnNewButton_2 = new JButton("\uD30C\uC77C \uC120\uD0DD"); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		
+		JButton btnNewButton_2 = new JButton("\uD30C\uC77C \uC120\uD0DD"); //ÆÄÀÏ ¼±ÅÃ
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-
+					
+				
 				 jfcd = new JFileChooser(
-						"C://Users//ï¿½ï¿½ï¿½ï¿½//Desktop");
+						"C://Users//Çö¿ì//Desktop");
 				 jfcd.addChoosableFileFilter(filter);
-			    jfcd.showDialog(null, "È®ï¿½ï¿½");
+			    jfcd.showDialog(null, "È®ÀÎ");
+			   //  jfcd.showDialog(null, "È®ÀÎ");
+				//FileReader read = null;
 				String str = "";
 				int data = 0;
 				try {
 					if (jfcd.getSelectedFile() == null)
 						return;
-					//read = new FileReader(jfcd.getSelectedFile().toString()); ï¿½Ì°Å´ï¿½ ï¿½Ø½ï¿½Æ® ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Ð¾ï¿½ï¿½Ã¼ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½
+					//read = new FileReader(jfcd.getSelectedFile().toString()); ÀÌ°Å´Â ÅØ½ºÆ® ÆÄÀÏ¸¸ ÀÐ¾î¿Ã¼ö ÀÖ´Â °Í
 					BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(jfcd.getSelectedFile().toString() ),"UTF-8"));
-// ï¿½Ì°Å´ï¿½ ï¿½×¸ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ , ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
+// ÀÌ°Å´Â ±×¸², ¿Àµð¿À , ºñµð¿ÀÅØ½ºÆ®µîÀ» ÆÄÀÏÀ» ÀÐ¾î ¿À´Â °Í.
 					while (true) {
 						try {
 							data = reader.read();
@@ -168,100 +176,124 @@ public class zipfile extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
-				File selectedFile = jfcd.getSelectedFile(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-
-				textArea.setText(str); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
-
-				textArea_2.setText(selectedFile.getPath()); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
-
-
+				
+				File selectedFile = jfcd.getSelectedFile(); // °æ·Î ÀúÀå
+				
+				//textArea.setText(time.format(new Date(selectedFile.lastModified()))); // ½Ã°£ º¸ÀÌ°Ô ÇÏ±â
+				//System.out.println(time.format(new Date(selectedFile.lastModified())));
+				
+				textArea.setText(str); //ÆÄÀÏ ³»¿ë º¸¿©ÁÖ±â
+				
+				
+				
+				//zipfile.setNamed(selectedFile);
+				textArea_2.setText(selectedFile.getPath()); //°æ·Î º¸¿©ÁÖ±â 
+				
+			/*	Name = jfcd.getSelectedFile().getName();
+			setNamed(jfcd.getSelectedFile().getName());*///ÆÄÀÏÀ» ¼±ÅÃÇÏÁö ¾ÊÀ»½Ã ¾ÐÃàÀÌ µÇÁö¾ÊÀ½
+				//System.out.println(Name); ÆÄÀÏ¸í
+				//System.out.println(getName()); //°á°ú frame0
+				//System.out.println(getNamed()); ÆÄÀÏ¸í
+			
 			setStr(selectedFile.toString());
-
+		//	System.out.println(getRe());
+			//window.filestr(selectedFile.toString());
 			}
 		});
-
-
-		btnNewButton_2.setBounds(36, 10, 97, 23);
+		
+		
+		btnNewButton_2.setBounds(36, 10, 97, 23); 
 		contentPane.add(btnNewButton_2);
-
-btnNewButton.addActionListener(new ActionListener() { //ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½
-
+		
+btnNewButton.addActionListener(new ActionListener() { //¾ÐÃàÇÏ±â ¹öÆ° ½ÇÇà
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-
+			
+				
 			if(getStr()!=null) {
 				File oFile = new File(getStr());
 		    	long L =oFile.length();
-
+				
 				long startTime =System.currentTimeMillis();
-
+				//System.out.println("true");
+				//hubTest hub = new hubTest(getRe());
 				try {
-
-					hubTestï¿½Ù²Û°ï¿½.main(getStr());
-					length.Start(getStr());
+				//	hubTest.codes.clear();
+					hubTest¹Ù²Û°Í.main(getStr());
+					//length.Start(getStr());
+					Runlength.main(getStr());
+					//System.out.println("½ÇÇàµÊ");
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-
+				
 				long end = System.currentTimeMillis();
-				Newwindow window = new Newwindow(hubTestï¿½Ù²Û°ï¿½.encodeText(),hubTestï¿½Ù²Û°ï¿½.printCodes(), System.currentTimeMillis()-startTime,L,length.encode());
-
+			
+				Newwindow window = new Newwindow(hubTest¹Ù²Û°Í.encodeText(),hubTest¹Ù²Û°Í.printCodes(), System.currentTimeMillis()-startTime,L,Runlength.getRunlength());
+				
+				//System.out.println("¿©±â¼­ ½ÇÇà");
 				window.setVisible(true);
 				window.setResizable(false);
 				dispose();
-
+		
+				
+				
+				
+				
 			}else {
-				JOptionPane.showMessageDialog(null, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½!!!!!!");
+				JOptionPane.showMessageDialog(null, "ÆÄÀÏÀ» ¼±ÅÃÇØ ÁÖ¼¼¿ä!!!!!!");
 				return;
-
+				
 			}
+				
+				
 			}
-
+			
+			
 		});
-
-		/*JButton btnNewButton_3 = new JButton("\uC800\uC7A5"); //ï¿½ï¿½ï¿½ï¿½
+		
+		/*JButton btnNewButton_3 = new JButton("\uC800\uC7A5"); //ÀúÀå
 		btnNewButton_3.setBounds(520, 356, 97, 23);
 		contentPane.add(btnNewButton_3);
-
-
-
-
+		
+		
+		
+		
 		btnNewButton_3.addActionListener(new ActionListener() {
-
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				String resultStr = null;
 				resultStr = JOptionPane.showInputDialog(null,
-						"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½.\r\n(È®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)", "ï¿½ï¿½ï¿½ï¿½",
+						"ÀúÀåÇÒ ÆÄÀÏÀÇ ÀÌ¸§À» ÁöÁ¤ÇÏ¼¼¿ä.\r\n(È®ÀåÀÚÆ÷ÇÔ)", "ÀúÀå",
 						JOptionPane.INFORMATION_MESSAGE);
 				 jfcd = new JFileChooser(
-							"C://Users//ï¿½ï¿½ï¿½ï¿½//Desktop");
+							"C://Users//Çö¿ì//Desktop");
 				 jfcd.setDialogTitle("Save a File");
 				 jfcd.setFileFilter(new FileNameExtensionFilter(".txt"," Text file"));
 				int res= jfcd.showSaveDialog(null);
 				// String resulStr = jfcd.getFileFilter().getDescription();
-
+		
 				File fi = jfcd.getSelectedFile();
 				if(res == jfcd.APPROVE_OPTION) {
 			String rest = textArea.getText();
 			try {
-
+				
 					char data = 0;
 					String resulStr = fi.getPath();
 					if (resulStr == null)
 						return;
 					@SuppressWarnings("resource")
 					DataOutputStream fw = new DataOutputStream(
-							new FileOutputStream(resulStr)); // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+							new FileOutputStream(resulStr)); // ¹ÙÀÌÆ® ½ºÆ®¸²Àº ¹ÙÀÌÆ® ´ÜÀ§·Î ÀÔÃâ·ÂÀ» ÇÔ
 					for (int i = 0; i < rest.length(); i++) {
 						data = rest.charAt(i);
 						fw.write(data);
 					}
-
+					
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -269,20 +301,20 @@ btnNewButton.addActionListener(new ActionListener() { //ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½
 			}
 		});
 		*/
-
-
+		
+		
 		JMenuBar menubar = new JMenuBar();
-		JMenu menu =new JMenu("ï¿½ï¿½ï¿½ï¿½");
-		JMenuItem menultem= new JMenuItem("ï¿½ï¿½ï¿½ï¿½");
+		JMenu menu =new JMenu("ÆÄÀÏ");
+		JMenuItem menultem= new JMenuItem("¿­±â");
 		menultem.addActionListener(new ActionListener() {
-
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				jfcd = new JFileChooser(
-						"C://Users//ï¿½ï¿½ï¿½ï¿½//Desktop");
+						"C://Users//Çö¿ì//Desktop");
 				 jfcd.addChoosableFileFilter(filter);
-				 jfcd.showDialog(null, "È®ï¿½ï¿½");
+				 jfcd.showDialog(null, "È®ÀÎ");
 				FileReader read = null;
 				String str = "";
 				int data = 0;
@@ -309,24 +341,24 @@ btnNewButton.addActionListener(new ActionListener() { //ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½
 					e1.printStackTrace();
 				}
 
-				textArea.setText(str); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
-
+				textArea.setText(str); //ÆÄÀÏ ³»¿ë º¸¿©ÁÖ±â
+				
 				File selectedFile = jfcd.getSelectedFile();
 				//zipfile.setNamed(selectedFile);
-				textArea_2.setText(selectedFile.getPath()); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
-
+				textArea_2.setText(selectedFile.getPath()); //°æ·Î º¸¿©ÁÖ±â 
+				
 				named = selectedFile.getPath();
 				Name = jfcd.getSelectedFile().getName();
-
-
+				
+				
 			}
 		});
-		JMenuItem menultem1= new JMenuItem("ï¿½ï¿½ï¿½ï¿½");
+		JMenuItem menultem1= new JMenuItem("ÀúÀå");
 		menubar.add(menu);
 		menu.add(menultem);
 		menu.add(menultem1);
 		setJMenuBar(menubar);
-
+	
 	}
 
 	public String getNamed() {
@@ -336,7 +368,7 @@ btnNewButton.addActionListener(new ActionListener() { //ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½
 	public  void setNamed(String selectedFile) {
 		zipfile.named = selectedFile;
 	}
-
+	
 	public String getStr() {
 		return str;
 	}
@@ -344,6 +376,6 @@ btnNewButton.addActionListener(new ActionListener() { //ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½
 	public void setStr(String str) {
 		this.str = str;
 	}
-
-
+	
+	
 }

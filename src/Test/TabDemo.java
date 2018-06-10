@@ -45,7 +45,7 @@ static long eventMask;
 		Chart chart= new Chart(number2,time, endnumber);
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 527, 383);
+		setBounds(100, 100, 780, 380);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -54,7 +54,7 @@ static long eventMask;
 		
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 511, 344);
+		tabbedPane.setBounds(0, 0, 764, 341);
 		contentPane.add(tabbedPane);
 		
 		JPanel panel = new JPanel(); //수치비교
@@ -88,6 +88,45 @@ static long eventMask;
 		panel_3.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "run-length", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_3.setBounds(269, 23, 225, 282);
 		panel.add(panel_3);
+		panel_3.setLayout(null);
+		
+		JLabel size = new JLabel("원번크기: "+"bytes");
+		size.setBounds(12, 41, 201, 15);
+		panel_3.add(size);
+		
+		JLabel compressSize = new JLabel("압축크기: "+"bytes");
+		compressSize.setBounds(12, 91, 201, 15);
+		panel_3.add(compressSize);
+		
+		JLabel compressrate = new JLabel("압축률: "+"%");
+		compressrate.setBounds(12, 146, 201, 15);
+		panel_3.add(compressrate);
+		
+		JLabel compressTime = new JLabel("압축시간: "+"ms");
+		compressTime.setBounds(12, 203, 201, 15);
+		panel_3.add(compressTime);
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "LZW", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_5.setBounds(522, 23, 225, 282);
+		panel.add(panel_5);
+		panel_5.setLayout(null);
+		
+		JLabel size2 = new JLabel("원번크기: "+"bytes");
+		size2.setBounds(12, 38, 201, 15);
+		panel_5.add(size2);
+		
+		JLabel compressSize2 = new JLabel("압축크기: "+"bytes");
+		compressSize2.setBounds(12, 89, 201, 15);
+		panel_5.add(compressSize2);
+		
+		JLabel compressrate2 = new JLabel("압축률: "+"%");
+		compressrate2.setBounds(12, 142, 201, 15);
+		panel_5.add(compressrate2);
+		
+		JLabel compressTime2 = new JLabel("압축시간: "+"ms");
+		compressTime2.setBounds(12, 200, 201, 15);
+		panel_5.add(compressTime2);
 		
 		
 		
@@ -96,7 +135,7 @@ static long eventMask;
 		panel_1.setLayout(null);
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(0, 0, 506, 315);
+		panel_4.setBounds(0, 0, 747, 312);
 		panel_4.add(chart.getChart());
 		panel_1.add(panel_4);
 		
