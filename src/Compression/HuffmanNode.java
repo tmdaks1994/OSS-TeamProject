@@ -1,4 +1,4 @@
-package Compress;
+package Test;
 
 public class HuffmanNode {
     HuffmanNode left, right;

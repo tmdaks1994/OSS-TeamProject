@@ -2,6 +2,7 @@ package Test;
 
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -38,7 +39,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 @SuppressWarnings("unused")
-public class zipfile extends JFrame {
+public class Main extends JFrame {
 
 	private JPanel contentPane;
 	public static String Name = "";
@@ -46,8 +47,11 @@ public class zipfile extends JFrame {
 	public String str;
 	public static String nul=null;
 	public String rec;
-	
-	
+	 static int[] array;
+	 static int[] arrays;
+	 static String[] integerStrings;
+	 static String[] arraylzw;
+	 static String lzwreulst;
 	
 
 	JFileChooser jfcd;
@@ -62,7 +66,7 @@ public class zipfile extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					zipfile frame = new zipfile();
+					Main frame = new Main();
 					frame.setVisible(true);
 					frame.setResizable(false);
 				} catch (Exception e) {
@@ -75,7 +79,7 @@ public class zipfile extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public zipfile() {
+	public Main() {
 	
 		try {
 			UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
@@ -94,11 +98,9 @@ public class zipfile extends JFrame {
 		}
 		
 		setStr(nul);//파일 선택창을 다시 불러왔을때 파일 경로값을 초기화 시켜서 압축하기 버튼을 다시 눌렀을때 경고 메세지 가 뜨게 함
-		//name nameing = new name();
-		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 890, 450);
+		setBounds(100, 50, 1028, 740);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -106,33 +108,23 @@ public class zipfile extends JFrame {
 		setTitle("압축 알고리즘 비교 프로그램");
 		
 		JButton btnNewButton = new JButton("압축 하기");
-		btnNewButton.setBounds(390, 354, 97, 23);
+		btnNewButton.setBounds(486, 592, 117, 37);
 		contentPane.add(btnNewButton);
-		
-	/*	JButton btnNewButton_1 = new JButton("압축 해제");
-		btnNewButton_1.setBounds(391, 356, 97, 23);
-		contentPane.add(btnNewButton_1);*/
-		
-		
-		JLabel label = new JLabel("\uD5C8\uD504\uB9CC \uC555\uCD95"); //허프만 압축
-		label.setBounds(167, 44, 80, 15);
+			
+		JLabel label = new JLabel("압축 파일 내용"); //허프만 압축
+		label.setBounds(499, 44, 80, 15);
 		contentPane.add(label);
 		
-		
-		JLabel lblNewLabel = new JLabel("\uBE44\uAD50\uB300\uC0C1 \uC555\uCD95\uC54C\uACE0\uB9AC\uC998"); //비교대상 압축알고리즘
-		lblNewLabel.setBounds(607, 44, 168, 15);
-		contentPane.add(lblNewLabel);
-		
-		JTextArea textArea_2 = new JTextArea();
-		textArea_2.setBounds(157, 10, 535, 24);
+		JTextArea textArea_2 = new JTextArea(); //파일 경로
+		textArea_2.setBounds(157, 10, 755, 24);
 		textArea_2.setEditable(false);
 		contentPane.add(textArea_2);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(157, 69, 537, 275);
+		scrollPane.setBounds(157, 69, 755, 500);
 		contentPane.add(scrollPane);
 		
-		JTextArea textArea = new JTextArea();
+		JTextArea textArea = new JTextArea(); // 압출 텍스트 내용을 보여주는 곳
 		scrollPane.setViewportView(textArea);
 		textArea.setEditable(false);
 		
@@ -145,7 +137,6 @@ public class zipfile extends JFrame {
 						"C://Users//현우//Desktop");
 				 jfcd.addChoosableFileFilter(filter);
 			    jfcd.showDialog(null, "확인");
-			   //  jfcd.showDialog(null, "확인");
 				//FileReader read = null;
 				String str = "";
 				int data = 0;
@@ -179,25 +170,13 @@ public class zipfile extends JFrame {
 				
 				File selectedFile = jfcd.getSelectedFile(); // 경로 저장
 				
-				//textArea.setText(time.format(new Date(selectedFile.lastModified()))); // 시간 보이게 하기
-				//System.out.println(time.format(new Date(selectedFile.lastModified())));
-				
-				textArea.setText(str); //파일 내용 보여주기
-				
-				
-				
-				//zipfile.setNamed(selectedFile);
+				Font f1=new Font("돋움",Font.PLAIN,20);
+				textArea.setFont(f1);
+				textArea.setText(str); //파일 내용 보여주기		
 				textArea_2.setText(selectedFile.getPath()); //경로 보여주기 
-				
-			/*	Name = jfcd.getSelectedFile().getName();
-			setNamed(jfcd.getSelectedFile().getName());*///파일을 선택하지 않을시 압축이 되지않음
-				//System.out.println(Name); 파일명
-				//System.out.println(getName()); //결과 frame0
-				//System.out.println(getNamed()); 파일명
+		
 			
 			setStr(selectedFile.toString());
-		//	System.out.println(getRe());
-			//window.filestr(selectedFile.toString());
 			}
 		});
 		
@@ -214,43 +193,42 @@ btnNewButton.addActionListener(new ActionListener() { //압축하기 버튼 실행
 			if(getStr()!=null) {
 				File oFile = new File(getStr());
 		    	long L =oFile.length();
-				
-				long startTime =System.currentTimeMillis();
-				//System.out.println("true");
-				//hubTest hub = new hubTest(getRe());
+		    	
 				try {
-				//	hubTest.codes.clear();
-					hubTest바꾼것.main(getStr());
-					//length.Start(getStr());
+					Huffman.main(getStr());
+				
 					Runlength.main(getStr());
-					//System.out.println("실행됨");
+					
+					LZW.main(getStr());
+			
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
-				long end = System.currentTimeMillis();
+				//lzw압축알고리즘의 인코딩 수정을 하려고 하는 변화과정
+				array = LZW.comresult().stream().mapToInt(i->i).toArray();
 			
-				Newwindow window = new Newwindow(hubTest바꾼것.encodeText(),hubTest바꾼것.printCodes(), System.currentTimeMillis()-startTime,L,Runlength.getRunlength());
+						 arraylzw = new String[array.length];
+						 for(int i=0; i<arraylzw.length; i++) {
+						 	arraylzw[i]=String.valueOf(array[i]);		
+						 }
+						 
 				
-				//System.out.println("여기서 실행");
+				         lzwreulst = converStringArrayToString(arraylzw," ");
+			
+				Fileencoding window = new Fileencoding(Huffman.encodeText(),Huffman.printCodes(), Huffman.time(),L,Runlength.getenrunlength(),lzwreulst,LZW.resultcom());
+				
 				window.setVisible(true);
 				window.setResizable(false);
 				dispose();
-		
-				
-				
-				
 				
 			}else {
 				JOptionPane.showMessageDialog(null, "파일을 선택해 주세요!!!!!!");
-				return;
-				
+				return;				
 			}
 				
-				
 			}
-			
 			
 		});
 		
@@ -311,20 +289,23 @@ btnNewButton.addActionListener(new ActionListener() { //압축하기 버튼 실행
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				jfcd = new JFileChooser(
+				
+				 jfcd = new JFileChooser(
 						"C://Users//현우//Desktop");
 				 jfcd.addChoosableFileFilter(filter);
-				 jfcd.showDialog(null, "확인");
-				FileReader read = null;
+			    jfcd.showDialog(null, "확인");
+				//FileReader read = null;
 				String str = "";
 				int data = 0;
 				try {
 					if (jfcd.getSelectedFile() == null)
 						return;
-					read = new FileReader(jfcd.getSelectedFile().toString());
+					//read = new FileReader(jfcd.getSelectedFile().toString()); 이거는 텍스트 파일만 읽어올수 있는 것
+					BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(jfcd.getSelectedFile().toString() ),"UTF-8"));
+//이거는 그림, 오디오 , 비디오텍스트등을 파일을 읽어 오는 것.
 					while (true) {
 						try {
-							data = read.read();
+							data = reader.read();
 							if (data == -1)
 								break;
 							else {
@@ -339,18 +320,20 @@ btnNewButton.addActionListener(new ActionListener() { //압축하기 버튼 실행
 					}
 				} catch (FileNotFoundException e1) {
 					e1.printStackTrace();
+				} catch (UnsupportedEncodingException k) {
+					// TODO Auto-generated catch block
+					k.printStackTrace();
 				}
-
-				textArea.setText(str); //파일 내용 보여주기
 				
-				File selectedFile = jfcd.getSelectedFile();
-				//zipfile.setNamed(selectedFile);
+				File selectedFile = jfcd.getSelectedFile(); // 경로 저장
+				Font f1=new Font("돋움",Font.PLAIN,20);
+				textArea.setFont(f1);
+				textArea.setText(str); //파일 내용 보여주기		
 				textArea_2.setText(selectedFile.getPath()); //경로 보여주기 
-				
-				named = selectedFile.getPath();
-				Name = jfcd.getSelectedFile().getName();
-				
-				
+		
+			
+			setStr(selectedFile.toString());
+						
 			}
 		});
 		JMenuItem menultem1= new JMenuItem("저장");
@@ -366,7 +349,7 @@ btnNewButton.addActionListener(new ActionListener() { //압축하기 버튼 실행
 	}
 
 	public  void setNamed(String selectedFile) {
-		zipfile.named = selectedFile;
+		Main.named = selectedFile;
 	}
 	
 	public String getStr() {
@@ -377,5 +360,11 @@ btnNewButton.addActionListener(new ActionListener() { //압축하기 버튼 실행
 		this.str = str;
 	}
 	
+	private static String converStringArrayToString(String[] strArr,String delimiter) {
+		StringBuilder sb = new StringBuilder();
+		for(String str: strArr)
+			sb.append(str).append(delimiter);
+		return sb.substring(0,sb.length()-1);
+	}
 	
 }

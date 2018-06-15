@@ -1,4 +1,4 @@
-package Compress;
+package Test;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -32,12 +32,7 @@ public class Chart extends JFrame {
 	
 	dataset1.addValue(huffman, "허프만", "압축률");
 	dataset1.addValue(runlength, "런랭스", "압축률");
-	//dataset1.addValue(sizeget(endnumber), "허프만", "압축크기");
-//dataset1.addValue(sizeget(runlengthsize), "런랭스", "압축크기");
-	
-	//dataset1.addValue(time, "허프만", "압축시간");
-	//dataset1.addValue(runlengthTime, "런랭스", "압축시간");
-	
+
 	dataset1.addValue(LZW.lzwcompressrate(), "lzw", "압축률");
 	
 	final CategoryItemRenderer renderer = new BarRenderer();

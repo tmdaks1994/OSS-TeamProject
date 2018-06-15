@@ -1,4 +1,4 @@
-package Compress;
+package Test;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -25,15 +25,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class Huffman {
     static final boolean readFromFile = false;
     static final boolean newTextBasedOnOldOne = false;
-static JFileChooser jfcd;
-static FileNameExtensionFilter filter = new FileNameExtensionFilter("txt 파일", "txt");
 static FileReader read;
 static File oFile;
 
     static PriorityQueue<HuffmanNode> nodes = new PriorityQueue<>((o1, o2) -> (o1.value < o2.value) ? -1 : 1);
     static TreeMap<Character, String> codes = new TreeMap<>(); //character 문자 셋
     static String text = "";
-    static String array;
     static String encoded = "";
     static String decoded = "";
     static long startTime;
@@ -41,7 +38,6 @@ static File oFile;
     
     public static void main(String args) throws FileNotFoundException {
     	startTime =System.currentTimeMillis();
-        int decision = 1;
         
     		String str = "";
     		int data = 0;
@@ -68,76 +64,23 @@ static File oFile;
     			}
     		} catch (FileNotFoundException e1) {
     			e1.printStackTrace();
-    		} /*catch (UnsupportedEncodingException e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
-    		}*/
-    		//File selectedFile = jfcd.getSelectedFile(); // 경로 저장
+    		} 
     	
-    	
-            if (handlingDecision(str, decision, args)); //continue;
-            //decision = consoleMenu(scanner);
+            if (handlingDecision(str, args)); //continue;
             endTime = System.currentTimeMillis()-startTime;
     }
 
-   /* private static int consoleMenu(Scanner scanner) {
-        int decision;
-        System.out.println("\n---- Menu ----\n" +
-                "-- [-1] to exit \n" +
-                "-- [1] to enter new text\n" +
-                "-- [2] to encode a text\n" +
-                "-- [3] to decode a text");
-        decision = Integer.parseInt(scanner.nextLine());
-        if (readFromFile)
-            System.out.println("Decision: " + decision + "\n---- End of Menu ----\n");
-        return decision;
-    }*/
-
-    public static boolean handlingDecision(String str, int decision, String array2) {
-        if (decision == 1) {
+    public static boolean handlingDecision(String str, String array2) {
             if (handleNewText(str,array2)) return true;
-        } /*else if (decision == 2) {
-            if (handleEncodingNewText(str)) return true;
-        } else if (decision == 3) {
-            handleDecodingNewText(str);
-        }*/
-        return false;
+            else
+            return false;
     }
-
-    /*public static void handleDecodingNewText(String str) {
-        System.out.println("Enter the text to decode:");
-        encoded = str;
-        System.out.println("Text to Decode: " + encoded);
-        decodeText();
-    }*/
-
- /*   public static boolean handleEncodingNewText(String str) {
-        System.out.println("Enter the text to encode:");
-        text = str;
-        System.out.println("Text to Encode: " + text);
-
-        if (!IsSameCharacterSet()) {
-            System.out.println("Not Valid input");
-            text = "";
-            return true;
-        }
-        encodeText();
-        return false;
-    }*/
 
     public static boolean handleNewText(String str, String array2) {
     	
-    /*	oFile = new File(array2);
-    	long L =oFile.length(); //처음 파일 크기
-    	*/
      
           text = str;// txt파일에서 읽은 str을 일단 text에 복사한다.
    
-   /*     if (newTextBasedOnOldOne && (oldTextLength != 0 && !IsSameCharacterSet())) {
-            System.out.println("Not Valid input");
-            text = "";
-            return true;
-        }*/
             nodes.clear();// 처음부터 다시 선택해야 할때 노드에 저장되어있는 값을 초기화 시키고 다시 선택한 값들을 집어 넣는다.
             codes.clear();
             encoded = "";
@@ -146,34 +89,15 @@ static File oFile;
                 
            
             calculateCharIntervals(nodes, true,array2); //빈도수
-          //  startTime =System.currentTimeMillis();
             
             buildTree(nodes); //트리에 집어넣기
             generateCodes(nodes.peek(), ""); //선두를 가져온다.. //0과1을 집어넣는다.
-          //  endTime= System.currentTimeMillis()-startTime; //압축 시간??
            
             encodeText();
-        
-            // decodeText();
-          //  System.out.println(L+ " bytes");
-        //    System.out.println(L*8+"bit");
             return false;
-
-
-
     }
 
- /*   public static boolean IsSameCharacterSet() {
-        boolean flag = true;
-        for (int i = 0; i < text.length(); i++)
-            if (ASCII[text.charAt(i)] == 0) {
-                flag = false;
-                break;
-            }
-        return flag;
-    }*/
-
-    public static String decodeText(String enco) {
+    public static String decodeText(String enco) { //인코딩 값의 수정한 것을 가져오기 위해서  string enco로 가지고 온다.
         decoded = "";
         HuffmanNode node = nodes.peek();
         
@@ -193,7 +117,6 @@ static File oFile;
 
 
         }
-       // System.out.println("Decoded Text: " + decoded);
         return decoded;
     }
 
@@ -201,10 +124,6 @@ static File oFile;
         encoded = "";
         for (int i = 0; i < text.length(); i++)
             encoded += codes.get(text.charAt(i));
-      //  System.out.println("Encoded Text:" + encoded);
-   //     System.out.println(encoded.length()+"bit");
-     //   System.out.println(encoded.length()*8+"bytes");
-        
         return encoded;
         
     }
@@ -215,22 +134,14 @@ static File oFile;
     }  
     		
     public static TreeMap<Character, String> printCodes() { //번호 수여
-       // System.out.println("--- Printing Codes ---");
-       
-      //  codes.forEach((k, v) -> System.out.println("'" + k + "' : " + v));
-       // System.out.println("----------------------------------------");
-        return codes;
+        return codes; 
     }
 
     public static void calculateCharIntervals(PriorityQueue<HuffmanNode> vector, boolean printIntervals, String array2) { //빈도수
-     //   if (printIntervals) System.out.println("-- intervals --");
-      
-        //arr.add(text);
         oFile = new File(array2);
-    	int L =(int) (oFile.length()*100); 
-    	
-    	
+    	int L =(int) (oFile.length()*100); 	
         int ASCII[] = new int[L];
+        
        vector.clear();
         for (int i = 0; i < text.length(); i++)
         {  ASCII[text.charAt(i)]++;
@@ -240,11 +151,9 @@ static File oFile;
         for (int i = 0; i < ASCII.length; i++)
             if (ASCII[i] > 0) {
                 vector.add(new HuffmanNode(ASCII[i] / (text.length() * 1.0), ((char) i) + ""));
-               // if (printIntervals)
-                 //   System.out.println("'" + ((char) i) + "' : " +( ASCII[i] / (text.length()*1.0)) * 100);
             }
     }
-    								//generateCodes(nodes.peek(), "");
+   
     public static void generateCodes(HuffmanNode node, String s) { // 0과 1
         if (node != null) {
             if (node.right != null)

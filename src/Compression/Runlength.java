@@ -1,4 +1,4 @@
-package Compress;
+package Test;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,8 +15,7 @@ public class Runlength {
     public static void main(String args) {
         // TODO Auto-generated method stub
     	startTime =System.currentTimeMillis();
-    	 int decision = 1;
-    	
+   
     	  str = "";
  		int data = 0;
  		try {
@@ -44,14 +43,9 @@ public class Runlength {
  		} catch (FileNotFoundException e1) {
  			e1.printStackTrace();
  		} 
- /*catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-	
+
 		enrunlength=lengthencoding(str); //인코딩
 		
-//		derunlength=lengthdecoding(enrunlength); //디코딩
 		endTime = System.currentTimeMillis()-startTime;
 	}
     
@@ -84,15 +78,12 @@ public static String lengthdecoding(String desrc) {
 	}
 return dest2.toString();
 //ss456ss2211;;4
-	//s2415161s22212;241
+	//s2415161s22212;241 예시
 	}
 		
 		public static String getenrunlength() {
 			return enrunlength;
 		}
-	//	public static String getderunlength() {
-		//	return derunlength;
-	//	}
 		public static long getenrunlengthSIZE() {
 			return enrunlength.length();
 		}

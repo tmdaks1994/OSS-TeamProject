@@ -1,4 +1,4 @@
-package Compress;
+package Test;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -20,10 +20,47 @@ public class LZW {
 	 static String str;
 	 static long startTime;
 	 static long endTime;
-	 
+	    
+	 public static void main(String args) {
+	    	startTime =System.currentTimeMillis();
+	    	// TODO Auto-generated method stub
+	   	
+	   	 str = "";
+			int data = 0;
+			try {
+				if (args == null)
+					return;
+				read = new FileReader(args); //이거는 텍스트 파일만 읽어올수 있는 것
+				//BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(args),"euc-kr"));
+	//이거는 그림, 오디오 , 비디오텍스트등을 파일을 읽어 오는 것.
+				while (true) {
+					try {
+						data = read.read();
+						//strr=reader.readLine();
+						if (data == -1)
+							break;
+						else {
+							char data1 = (char) data;
+							str = str + data1;
+						}
+						if (str.length() == 10000)
+							break;
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				}
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			} 
+			
+	    	compressed = compress(str);
+	
+	       endTime = System.currentTimeMillis()-startTime;
+	    }
+	    	 
 	 //인코딩
 	 public static List<Integer> compress(String uncompressed) {
-        // Build the dictionary.
+        // 0~255까지 테이블 형식으로 키보드에 있는 값들을 집어 넣는다.
 		 result.clear();
 		 dictionary.clear();
 		 
@@ -40,7 +77,7 @@ public class LZW {
                 w = wc;
             else {
                 result.add(dictionary.get(w));
-                // Add wc to the dictionary.
+                // 추가한걸 집어넣기 
                 dictionary.put(wc, dictSize++);
                 w = "" + c;
             }
@@ -54,9 +91,11 @@ public class LZW {
     /** Decompress a list of output ks to a string. */
 	 //디코딩
     public static String decompress(List<Integer> compressed) {
-        // Build the dictionary.
+
     	Map<Integer,String> dictionary = new HashMap<Integer,String>();
     	dictionary.clear();
+    	
+    	
     	dictSize = 256;
         
         for (int i = 0; i < 256; i++)
@@ -75,7 +114,6 @@ public class LZW {
  
             result.append(entry);
  
-            // Add w+entry[0] to the dictionary.
             dictionary.put(dictSize++, w + entry.charAt(0));
  
             w = entry;
@@ -83,54 +121,7 @@ public class LZW {
         return result.toString();
     }
  
-    public static void main(String args) {
-    	startTime =System.currentTimeMillis();
-    	// TODO Auto-generated method stub
-   	 int decision = 1;
-   	
-   	 str = "";
-		int data = 0;
-		try {
-			if (args == null)
-				return;
-			read = new FileReader(args); //이거는 텍스트 파일만 읽어올수 있는 것
-			//BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(args),"euc-kr"));
-//이거는 그림, 오디오 , 비디오텍스트등을 파일을 읽어 오는 것.
-			while (true) {
-				try {
-					data = read.read();
-					//strr=reader.readLine();
-					if (data == -1)
-						break;
-					else {
-						char data1 = (char) data;
-						str = str + data1;
-					}
-					if (str.length() == 10000)
-						break;
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		} 
-    	//연속된 문자열들에 대한 표를 만들고 다음에 같은 문자열이 발견되면 이표를 참조하는 압축 기법이다.
-		//compressed.clear();
-	//	dictSize=0;
-		//result.clear();
-	//	dictionarys.clear();
-		
-    	compressed = compress(str);
-       // System.out.println(compressed);
-       // System.out.println(compressed.size());
-       // String decompressed = 
-    //   resultdecom=  decompress(compressed);
 
-        // System.out.println(decompressed);
-       endTime = System.currentTimeMillis()-startTime;
-    }
-    
     public static  Map<String,Integer> resultcom(){
     	
     	return dictionary;
